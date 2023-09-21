@@ -21,14 +21,14 @@ int	main(int ac, char *av[])
 		exit(1);
 	}
 
-	sock = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP); // TCP 소켓 생성, 앞의 두 인자를 통한 프로토콜 정보에 해당하는 tcp 프로토콜 하나이기 때문에 세 번째 인자는 생략 가능
+	sock = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);	// TCP 소켓 생성, 앞의 두 인자를 통한 프로토콜 정보에 해당하는 tcp 프로토콜 하나이기 때문에 세 번째 인자는 생략 가능
 	if (sock == -1)
 		error_handling("socket() error");
 
 	memset(&serv_addr, 0, sizeof(serv_addr));
-	serv_addr.sin_family = AF_INET;
-	serv_addr.sin_addr.s_addr = inet_addr(av[1]);
-	serv_addr.sin_port = htons(atoi(av[2]));
+	serv_addr.sin_family = AF_INET;						// 주소 체계(Address Family)를 AF_INET(IPv4)으로 설정
+	serv_addr.sin_addr.s_addr = inet_addr(av[1]);		// 32비트의 IP 주소를 네트워크 바이트 형식으로 변환
+	serv_addr.sin_port = htons(atoi(av[2]));			// 16비트의 포트 번호를 네트워크 바이트 형식으로 변환
 
 	if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) == -1) // connect 함수의 호출을 통해 서버에 연결을 요청
 		error_handling("connect() error");
