@@ -2,7 +2,7 @@
 
 NAME=webserver
 CC=gcc
-CFLAGS=-Wall -Werror -Wextra
+CFLAGS=-Wall -Werror -Wextra -g3 -fsanitize=address
 LIBFT=./libft/libft.a
 
 SRCS=webserver.c handle_request.c

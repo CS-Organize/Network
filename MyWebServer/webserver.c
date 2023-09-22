@@ -45,16 +45,22 @@ int main(int ac, char *av[])
 
 	printf("웹 서버가 시작되었습니다. 포트 %d에서 대기 중...\n", port);
 
-	while (1) {
+	while (1)
+	{
 		// 클라이언트 연결 대기
 		client_socket = accept(server_socket, (struct sockaddr *)&client_addr, &client_addr_len);
+		printf("클라이언트 %d의 연결을 수락했습니다.\n", client_socket);
 		// 요청 처리 (요청된 파일명을 URL에서 추출)
 		read(client_socket, request, sizeof(request));
 
-		printf("#request\n%s\n", request);
+		ft_putstr_fd("\033[0;32m", 1);
+		printf("========#request========\n%s\n========================\n\n", request);
+		ft_putstr_fd("\033[0m", 1);
 		file_name = strtok(request, " ");	// 첫 번째 문자열을 가져옴
 		file_name = strtok(NULL, " ");		// 두 번째 문자열을 가져옴
-		printf("#file_name\n%s\n", file_name);
+		ft_putstr_fd("\033[0;33m", 1);
+		printf("=======#file_name=======\n%s\n========================\n", file_name);
+		ft_putstr_fd("\033[0m", 1);
 
 		if (file_name != NULL)
 		{
