@@ -43,16 +43,20 @@
 #include <stdint.h>
 
 // 이진수 출력 함수
-void print_binary(uint16_t num) {
-	for (int i = 15; i >= 0; i--) {
+void print_binary(uint16_t num)
+{
+	for (int i = 15; i >= 0; i--)
+	{
 		printf("%d", (num >> i) & 1);
 		if (i % 4 == 0) printf(" ");
 	}
 	printf("\n");
 }
 
-int main() {
-	uint16_t IPv4_Pseudo_Header[] = {
+int main()
+{
+	uint16_t IPv4_Pseudo_Header[] =
+	{
 		// IPv4 Header
 		0xc0ff, 0xff32, // c0 ff ff 32 => Source IP Address : 192.255.255.50
 		0xc0ff, 0xff33, // c0 ff ff 33 => Destination IP Address : 192.255.255.51
@@ -77,6 +81,7 @@ int main() {
 	print_binary(sum);
 
 	// Step 2: Bit[:15] + Bit[16:19]
+	// if overflow, wrap around
 	uint16_t carry_bit = (sum & 0xF0000) >> 16;
 	uint16_t result = (sum & 0xFFFF) + carry_bit;
 
