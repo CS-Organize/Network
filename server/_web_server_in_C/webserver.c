@@ -1,13 +1,14 @@
 #include "webserver.h"
 
+const int HTTP_PORT = 80;
+
 // 1. 소켓 생성					-> socket
 // 2. IP주소와 PORT번호 할당	-> bind
 // 3. 연결요청 가능상태로 변경	-> listen
 // 4. 연결요청에 대한 수락		-> accept
 
-int main(int ac, char *av[])
+int main(const int ac, const char* av[])
 {
-	int					port;
 	int					server_socket;
 	int					client_socket;
 	struct sockaddr_in	server_addr;
@@ -16,13 +17,6 @@ int main(int ac, char *av[])
 	char				request[MAX_REQUEST_SIZE];
 	char				*file_name;
 
-	if (ac != 2)
-	{
-		printf("Usage: %s <port>\n", av[0]);
-		return 1;
-	}
-
-	port = ft_atoi(av[1]);
 	client_addr_len = sizeof(client_addr);
 
 	// 서버 소켓 생성
@@ -33,7 +27,7 @@ int main(int ac, char *av[])
 
 	server_addr.sin_family = AF_INET; 					// IPv4 주소 체계 사용
 	server_addr.sin_addr.s_addr = htonl(INADDR_ANY);	// 32비트 IPv4 주소
-	server_addr.sin_port = htons(port);					// 서버가 사용할 포트 번호
+	server_addr.sin_port = htons(HTTP_PORT);					// 서버가 사용할 포트 번호
 
 	// htons: host to network short (Endianness)
 
@@ -43,7 +37,7 @@ int main(int ac, char *av[])
 	// 서버 소켓으로 클라이언트의 연결 요청을 기다림 (최대 5개)
 	listen(server_socket, 5);
 
-	printf("웹 서버가 시작되었습니다. 포트 %d에서 대기 중...\n", port);
+	printf("웹 서버가 시작되었습니다. http://127.0.0.1:%d 에서 대기중...\n", HTTP_PORT);
 
 	while (1)
 	{
