@@ -36,11 +36,24 @@ BG_DEFAULT		:= \033[49m
 RESET 			:= \033[0m
 
 SRC_DIR			:= ./src
-INCLUDE			:= -I./src/RequestMessage -I./src/Exception
+INCLUDE			:= \
+				-I./src/exception \
+				-I./src/httpMessage \
+				-I./src/httpMessage/startLine/requestLine \
+				-I./src/httpMessage/startLine/statusLine \
+				-I./src/httpMessage/headerFields/requestHeaderFields \
+				-I./src/httpMessage/headerFields/responseHeaderFields \
+				-I./src/httpMessage/messageBody
 
 SRC				:= \
 				main.cpp \
-				RequestMessage/RequestMessage.cpp 
+				httpMessage/RequestMessage.cpp \
+				httpMessage/ResponseMessage.cpp \
+				httpMessage/startLine/requestLine/RequestLine.cpp \
+				httpMessage/startLine/statusLine/StatusLine.cpp \
+				httpMessage/headerFields/requestHeaderFields/RequestHeaderFields.cpp \
+				httpMessage/headerFields/responseHeaderFields/ResponseHeaderFields.cpp \
+				httpMessage/messageBody/MessageBody.cpp
 OBJ				:= $(addprefix $(SRC_DIR)/, $(SRC:.cpp=.o))
 
 all: $(NAME)
