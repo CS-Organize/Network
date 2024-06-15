@@ -1,4 +1,5 @@
 #include "RequestLine.hpp"
+#include <sstream>
 
 RequestLine::RequestLine()
 : mMethod("")
@@ -11,8 +12,23 @@ RequestLine::~RequestLine()
 }
 void RequestLine::parseRequestLine(const std::string& requestLine)
 {
-    (void)requestLine;
     // TODO: parse request line
+    // request-line = <method> SP <request-URL> SP <HTTP-version> CRLF
+
+    std::istringstream iss(requestLine);
+    if (iss >> mMethod >> mRequestURL >> mHTTPVersion)
+    {
+        // success
+    }
+    else
+    {
+        // fail
+        mMethod = "";
+        mRequestURL = "";
+        mHTTPVersion = "";
+        throw std::exception();
+    }
+    
 }
 std::string RequestLine::getMethod(void) const
 {
