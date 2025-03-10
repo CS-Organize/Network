@@ -4,7 +4,9 @@
 
 ## Network Model
 
-![TCP/IP Model (Internet Protocol Suite)](https://www.youtube.com/watch?v=HFRU01uS9nA&t=2s)
+<!-- https://stackoverflow.com/questions/4279611/how-to-embed-a-video-into-github-readme-md -->
+
+[![](https://img.youtube.com/vi/HFRU01uS9nA/hqdefault.jpg)](https://www.youtube.com/watch?v=HFRU01uS9nA)
 
 ### [OSI Model](https://en.wikipedia.org/wiki/OSI_model)
 
@@ -24,8 +26,8 @@
 | :---: | :-------------------------------------- | :--------------------------------------------------------------------------- | :------------------- |
 |   5   | [Application](/7_Application/README.md) | Network process to application. e.g. HTTP, FTP, SMTP, DNS, DHCP, Telnet, SSH | -                    |
 |   4   | [Transport](/4_Transport/README.md)     | End-to-end connections and reliability                                       | -                    |
-|   3   | [Network](/3_Network/README.md)       | Path determination and IP                                                    | Router               |
-|   2   | [Data Link](/2_DataLink/README.md)               | MAC and LLC                                                                  | Switch, Bridge       |
+|   3   | [Network](/3_Network/README.md)         | Path determination and IP                                                    | Router               |
+|   2   | [Data Link](/2_DataLink/README.md)      | MAC and LLC                                                                  | Switch, Bridge       |
 |   1   | [Physical](/1_Physical/README.md)       | Media, signal and binary transmission                                        | Hub, Repeater, Cable |
 
 ### What is the difference between OSI and TCP/IP Model?

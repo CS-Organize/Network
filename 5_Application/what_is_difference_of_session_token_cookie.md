@@ -1,4 +1,4 @@
-![YouTube](https://www.youtube.com/watch?v=tosLBcAX1vk&t=214s)
+[![](https://img.youtube.com/vi/tosLBcAX1vk/hqdefault.jpg)](https://www.youtube.com/watch?v=tosLBcAX1vk)
 
 ## The answer of wrtn
 ```markdown
